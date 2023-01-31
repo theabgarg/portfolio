@@ -1,10 +1,10 @@
 import type { NextComponentType } from "next";
 
 import {
-  BsSpotify,
-  MdEmail,
   AiOutlineGithub,
   AiOutlineTwitter,
+  FaLinkedinIn,
+  BsInstagram
 } from "../Misc/Icons.collection";
 
 import { Icon } from "../Misc/Icon.component";
@@ -20,6 +20,14 @@ const Contact: NextComponentType = () => {
         <Icon
           icon={<AiOutlineTwitter />}
           url="https://twitter.com/theabgarg"
+        />
+        <Icon
+          icon={<FaLinkedinIn />}
+          url="https://www.linkedin.com/in/theabgarg/"
+        />
+        <Icon
+          icon={<BsInstagram />}
+          url="https://www.instagram.com/theabgarg/"
         />
       </div>
     </div>
