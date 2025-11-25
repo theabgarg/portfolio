@@ -155,16 +155,6 @@ export default function Home() {
                 <span className="sr-only">LinkedIn</span>
               </Button>
             </Link>
-            <Link href="mailto:abhishekgarg502@gmail.com">
-              <Button
-                variant="outline"
-                size="icon"
-                className="rounded-full transition-all duration-300 hover:bg-accent hover:scale-110"
-              >
-                <Mail className="h-5 w-5" />
-                <span className="sr-only">Email</span>
-              </Button>
-            </Link>
           </div>
         </section>
 
@@ -525,60 +515,7 @@ export default function Home() {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <Card className="shadow-sm transition-transform duration-300 hover:shadow-md hover:-translate-y-1">
-                <CardHeader className="pb-2">
-                  <CardTitle className="text-2xl font-bold">
-                    Contact Information
-                  </CardTitle>
-                  <CardDescription className="text-base">
-                    Feel free to reach out through any of these channels
-                  </CardDescription>
-                </CardHeader>
                 <CardContent className="space-y-6 pt-4">
-                  <div className="flex items-center gap-4">
-                    <Button
-                      variant="outline"
-                      size="icon"
-                      className="rounded-full text-primary shrink-0"
-                    >
-                      <Mail className="h-5 w-5" />
-                    </Button>
-                    <div>
-                      <p className="font-semibold text-base">Email</p>
-                      <p className="text-sm text-muted-foreground">
-                        abhishekgarg502@gmail.com
-                      </p>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-4">
-                    <Button
-                      variant="outline"
-                      size="icon"
-                      className="rounded-full text-primary shrink-0"
-                    >
-                      <Phone className="h-5 w-5" />
-                    </Button>
-                    <div>
-                      <p className="font-semibold text-base">Phone</p>
-                      <p className="text-sm text-muted-foreground">
-                        +919911088081
-                      </p>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-4">
-                    <Button
-                      variant="outline"
-                      size="icon"
-                      className="rounded-full text-primary shrink-0"
-                    >
-                      <MapPin className="h-5 w-5" />
-                    </Button>
-                    <div>
-                      <p className="font-semibold text-base">Location</p>
-                      <p className="text-sm text-muted-foreground">
-                        Haryana, India
-                      </p>
-                    </div>
-                  </div>
                   <div className="pt-4">
                     <p className="font-semibold text-base mb-3">
                       Social Profiles
