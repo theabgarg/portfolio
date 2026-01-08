@@ -93,10 +93,10 @@ export default function Home() {
                 Hi, I'm <span className="text-primary">Abhishek Garg</span>
               </h1>
               <h2 className="text-2xl md:text-3xl font-medium text-muted-foreground">
-                Frontend Engineer
+                Software Engineer
               </h2>
               <p className="text-lg text-muted-foreground max-w-2xl leading-relaxed md:leading-loose">
-                Results-driven Frontend Engineer with over 4+ years of
+                Results-driven Software Engineer with over 5+ years of
                 experience in architecting and optimizing high-performance web
                 applications.
               </p>
@@ -173,31 +173,39 @@ export default function Home() {
                 <p className="text-xl font-medium leading-relaxed md:leading-loose">
                   I'm a passionate{" "}
                   <span className="text-primary font-semibold">
-                    Frontend Engineer
+                    Software Engineer
                   </span>{" "}
-                  with specialized expertise in React.js and Next.js ecosystems.
+                  with specialized expertise in React.js, Next.js, Node.js, and
+                  Golang.
                 </p>
 
                 <div className="space-y-5 text-base md:text-lg leading-relaxed md:leading-loose text-card-foreground/90">
                   <p>
-                    My journey in Frontend Engineering began with a curiosity
-                    about how websites work, which quickly evolved into a
-                    passion for building robust, user-friendly applications.
-                    Over the years, I've honed my skills through hands-on
-                    experience at organizations like SMC Global securities,
-                    National Informatics Centre, where I've contributed to
-                    various projects ranging from Trading platforms to
-                    Healthcare Apps.
+                    I focus on building performant, maintainable web
+                    applications and the backend services that support them. On
+                    the frontend, I work extensively with complex state
+                    management, real-time data updates, and UI architectures
+                    designed to scale. On the backend, I build and maintain
+                    Golang services and APIs that handle data processing, system
+                    integrations, and reliability-critical workflows.
                   </p>
 
                   <p>
-                    What drives me is the continuous learning process that comes
-                    with web development. I thrive in environments where I can
-                    explore new technologies and methodologies, constantly
-                    pushing the boundaries of what I can create. My experience
-                    with React.js has given me a strong foundation in building
-                    scalable, maintainable applications, but I'm always eager to
-                    expand my toolkit.
+                    I’ve worked on production systems at multiple organizations,
+                    contributing to applications used at scale and operating in
+                    regulated environments. These roles have given me hands-on
+                    experience with real-time systems, external integrations,
+                    and the practical challenges of maintaining software in
+                    production.
+                  </p>
+
+                  <p>
+                    I enjoy solving non-trivial engineering problems, improving
+                    system performance, and working close to real-world
+                    constraints. I’m particularly interested in roles where
+                    frontend performance and backend correctness are equally
+                    important, and where engineering decisions have a clear
+                    impact on the product.
                   </p>
 
                   {/* <blockquote className="pl-4 border-l-4 border-primary/50 italic my-6 md:my-8 py-2">
@@ -268,12 +276,13 @@ export default function Home() {
                 period="May 2023 - Present"
                 description="SMC Global is an organization that provides one stop investment solutions in trading & investments."
                 responsibilities={[
-                  "Engineered a real-time trading platform from the ground up using React.js, Material UI, and WebSocket.",
+                  "Engineered a real-time trading platform from the ground up using React.js, Material UI, and Golang.",
                   "Architected and implemented a reusable component library that accelerated feature development and ensured UI consistency across the application.",
                   "Enhanced application state management with Redux, improving data flow predictability and simplifying debugging for a complex trading interface.",
-                  "Spearheaded a comprehensive front-end performance overhaul, leveraging Webpack Bundle Analyzer to slash the main bundle size by 73% by replacing heavy libraries like Moment.js with lightweight alternatives like dayjs. This,combined with strategic lazy loading, image optimization, and main thread unblocking, cut initial load time by over 50% and reduced UI scripting time by 75%.",
+                  "Designed and integrated Golang-based APIs and WebSocket services to support real-time data flow, trading actions, and system integrations.",
+                  "Spearheaded a comprehensive front-end performance overhaul, leveraging Webpack Bundle Analyzer to slash the main bundle size by 73% by replacing heavy libraries like Moment.js with lightweight alternatives like dayjs. This, combined with strategic lazy loading, image optimization, and main thread unblocking, cut initial load time by over 50% and reduced UI scripting time by 75%.",
                   "Established a robust testing culture using Jest and React Testing Library, leading to a 35% decrease in critical production bugs.",
-                  "Also worked on deployment strategies, web security, performance optimization and implementing VAPT testing fixes. Proficient in tools like Sentry, Lighthouse, and WebVitals to monitor performance, reactive user interfaces",
+                  "Worked across frontend and backend boundaries on deployment strategies, web security, performance optimization, and implementing VAPT testing fixes. Proficient in tools like Sentry, Lighthouse, and WebVitals to monitor application health and performance.",
                 ]}
               />
 
@@ -402,7 +411,7 @@ export default function Home() {
                       <SkillBadge name="CSS" level="Advanced" />
                       <SkillBadge name="Javascript" level="Advanced" />
                       <SkillBadge name="Typescript" level="Advanced" />
-                      <SkillBadge name="Golang" level="Beginner" />
+                      <SkillBadge name="Golang" level="Intermediate" />
                     </div>
                   </TabsContent>
                   <TabsContent value="frameworks" className="mt-6 space-y-4">
@@ -412,6 +421,9 @@ export default function Home() {
                     <div className="flex flex-wrap gap-3 mt-2">
                       <SkillBadge name="React.js" level="Advanced" />
                       <SkillBadge name="Next.js" level="Advanced" />
+                      <SkillBadge name="Gin" level="Intermediate" />
+                      <SkillBadge name="Gorilla" level="Intermediate" />
+                      <SkillBadge name="Echo" level="Intermediate" />
                       <SkillBadge name="Redux" level="Advanced" />
                       <SkillBadge name="Node.js" level="Intermediate" />
                       <SkillBadge name="Express.js" level="Advanced" />
@@ -426,6 +438,7 @@ export default function Home() {
                       <SkillBadge name="Git" level="Advanced" />
                       <SkillBadge name="GitHub" level="Advanced" />
                       <SkillBadge name="Webpack" level="Advanced" />
+                      <SkillBadge name="Docker" level="Intermediate" />
                       <SkillBadge name="Jest" level="Advanced" />
                       <SkillBadge
                         name="React Testing Library"

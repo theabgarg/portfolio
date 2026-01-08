@@ -6,9 +6,9 @@ import { ThemeProvider } from "@/components/theme-provider";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Abhishek Garg - Frontend Engineer",
+  title: "Abhishek Garg - Software Engineer",
   description:
-    "Professional portfolio of Abhishek Garg, a Web Developer specializing in Frontend Web Apps.",
+    "Professional portfolio of Abhishek Garg, a Software Engineer specializing in React.js, Next.js, Golang.",
   generator: "Abhishek Garg",
 };
 
