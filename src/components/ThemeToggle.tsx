@@ -17,13 +17,13 @@ export default function ThemeToggle() {
         <button
             onClick={handleClick}
             type="button"
-            className="group relative flex h-9 w-9 items-center justify-center rounded-[0.72rem] border border-theme-divider bg-theme-card/70 text-theme-secondary transition-colors duration-200 hover:bg-theme-card-hover hover:text-theme-primary"
+            className="group relative flex h-9 w-9 items-center justify-center rounded-[0.72rem] border border-theme-divider bg-theme-card/70 text-theme-secondary transition-all duration-200 ease-out hover:scale-[1.03] hover:bg-theme-card-hover hover:text-theme-primary active:scale-95"
             aria-label={`Switch to ${isLight ? 'dark' : 'light'} mode`}
             title={`Switch to ${isLight ? 'dark' : 'light'} mode`}
         >
             <span className="pointer-events-none absolute inset-0 rounded-[0.72rem] ring-1 ring-white/0 transition group-hover:ring-white/10" />
             <svg
-                className={`absolute h-[18px] w-[18px] transition-all duration-500 ${isLight ? 'opacity-100 rotate-0 scale-100' : 'opacity-0 -rotate-90 scale-50'
+                className={`absolute h-[18px] w-[18px] transition-all duration-300 ease-out will-change-transform ${isLight ? 'opacity-100 rotate-0 scale-100' : 'opacity-0 -rotate-90 scale-75'
                     }`}
                 fill="none"
                 stroke="currentColor"
@@ -38,7 +38,7 @@ export default function ThemeToggle() {
                 />
             </svg>
             <svg
-                className={`absolute h-[18px] w-[18px] transition-all duration-500 ${isLight ? 'opacity-0 rotate-90 scale-50' : 'opacity-100 rotate-0 scale-100'
+                className={`absolute h-[18px] w-[18px] transition-all duration-300 ease-out will-change-transform ${isLight ? 'opacity-0 rotate-90 scale-75' : 'opacity-100 rotate-0 scale-100'
                     }`}
                 fill="none"
                 stroke="currentColor"

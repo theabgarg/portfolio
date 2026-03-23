@@ -48,31 +48,31 @@ export default function ThemeProvider({ children }: { children: React.ReactNode 
         syncDocumentTheme(nextTheme);
     };
 
-    const toggleTheme = (x?: number, y?: number) => {
+    const toggleTheme = (_x?: number, _y?: number) => {
+        void _x;
+        void _y;
         if (animatingRef.current) return;
-        animatingRef.current = true;
 
         const next = theme === 'dark' ? 'light' : 'dark';
         const overlay = overlayRef.current;
 
-        if (!overlay || x === undefined || y === undefined) {
+        if (!overlay) {
             applyTheme(next);
-            animatingRef.current = false;
             return;
         }
 
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (prefersReducedMotion) {
+            applyTheme(next);
+            return;
+        }
+
+        animatingRef.current = true;
         overlay.getAnimations().forEach(a => a.cancel());
 
-        const maxRadius = Math.hypot(
-            Math.max(x, window.innerWidth - x),
-            Math.max(y, window.innerHeight - y)
-        );
-
-        overlay.style.backgroundColor = next === 'light' ? '#fafafa' : '#000000';
-        overlay.style.opacity = '1';
-        overlay.style.clipPath = `circle(0px at ${x}px ${y}px)`;
+        overlay.style.backgroundColor = next === 'light' ? '#fafafa' : '#050505';
+        overlay.style.opacity = '0';
         overlay.style.display = 'block';
-        void overlay.offsetHeight;
 
         let switched = false;
         const applySwitch = () => {
@@ -81,39 +81,35 @@ export default function ThemeProvider({ children }: { children: React.ReactNode 
             applyTheme(next);
         };
 
-        const expandAnim = overlay.animate(
-            [
-                { clipPath: `circle(0px at ${x}px ${y}px)` },
-                { clipPath: `circle(${maxRadius}px at ${x}px ${y}px)` },
-            ],
-            { duration: 800, easing: 'cubic-bezier(0.22, 0.61, 0.36, 1)' }
+        const clearOverlay = () => {
+            overlay.style.display = 'none';
+            overlay.style.opacity = '';
+            animatingRef.current = false;
+        };
+
+        const fadeInAnim = overlay.animate(
+            [{ opacity: '0' }, { opacity: '1' }],
+            { duration: 190, easing: 'cubic-bezier(0.22, 1, 0.36, 1)', fill: 'forwards' }
         );
+        const switchTimer = window.setTimeout(applySwitch, 95);
 
-        const switchTimer = window.setTimeout(applySwitch, 430);
-
-        expandAnim.onfinish = () => {
+        fadeInAnim.onfinish = () => {
             applySwitch();
-            overlay.style.clipPath = `circle(${maxRadius}px at ${x}px ${y}px)`;
 
             const fadeAnim = overlay.animate(
                 [{ opacity: '1' }, { opacity: '0' }],
-                { duration: 200, easing: 'ease-out' }
+                { duration: 240, easing: 'ease-out', fill: 'forwards' }
             );
 
             fadeAnim.onfinish = () => {
-                overlay.style.display = 'none';
-                overlay.style.clipPath = '';
-                overlay.style.opacity = '';
-                animatingRef.current = false;
+                clearOverlay();
             };
+            fadeAnim.oncancel = clearOverlay;
         };
 
-        expandAnim.oncancel = () => {
+        fadeInAnim.oncancel = () => {
             window.clearTimeout(switchTimer);
-            overlay.style.display = 'none';
-            overlay.style.clipPath = '';
-            overlay.style.opacity = '';
-            animatingRef.current = false;
+            clearOverlay();
         };
     };
 
@@ -128,6 +124,7 @@ export default function ThemeProvider({ children }: { children: React.ReactNode 
                     zIndex: 60,
                     pointerEvents: 'none',
                     display: 'none',
+                    willChange: 'opacity',
                 }}
             />
         </ThemeContext.Provider>

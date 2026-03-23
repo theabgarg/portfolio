@@ -94,11 +94,6 @@ export default function PortfolioPage() {
                         <ul className={styles.navLinks}>
                             <li><a href="#stack">Things I&apos;ve Built</a></li>
                             <li><a href="#experience">Experience</a></li>
-                            <li>
-                                <a href={PROFILE.blogUrl} target="_blank" rel="noopener noreferrer">
-                                    Blogs
-                                </a>
-                            </li>
                         </ul>
                         <div className={styles.navActions}>
                             <ThemeToggle />
