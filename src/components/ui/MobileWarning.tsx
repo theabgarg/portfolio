@@ -9,7 +9,7 @@ export default function MobileWarning() {
 
                 <div className="mb-8">
                     <img
-                        src="/images/avatar.png"
+                        src="/images/avatar.jpg"
                         alt="Abhishek"
                         className="w-20 h-20 mx-auto rounded-full object-cover border-2 border-[#F4D03F]/30"
                     />

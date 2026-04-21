@@ -64,7 +64,7 @@ export default function OnboardingGuide({ step, onEnterSpace, onHintsDone }: Onb
                     <div className="mb-8 relative">
                         <div className="relative w-24 h-24 mx-auto">
                             <img
-                                src="/images/avatar.png"
+                                src="/images/avatar.jpg"
                                 alt="Abhishek"
                                 className="w-24 h-24 rounded-full object-cover border-2 border-white/20"
                             />

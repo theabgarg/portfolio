@@ -77,6 +77,9 @@
 
 .hero {
   position: relative;
+  display: flex;
+  align-items: center;
+  gap: 20;
 }
 
 .banner {
@@ -124,18 +127,18 @@
 }
 
 .avatarWrap {
-  margin-top: -2.8rem;
+  /* margin-top: -2.8rem; */
   position: relative;
   z-index: 5;
-  padding-left: 1.2rem;
+  /* padding-left: 1.2rem; */
 }
 
 .avatar {
-  width: 6rem;
-  height: 6rem;
-  border-radius: 999px;
+  width: 16rem;
+  height: 16rem;
+  border-radius: 4rem;
   overflow: hidden;
-  border: 3px solid var(--theme-page-bg);
+  /* border: 3px solid var(--theme-page-bg); */
   box-shadow: 0 0 0 1px var(--theme-divider), 0 10px 26px rgba(0, 0, 0, 0.28);
 }
 
