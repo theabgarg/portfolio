@@ -1,5 +1,1 @@
-import { redirect } from 'next/navigation';
-
-export default function Home() {
-  redirect('/portfolio');
-}
+export { default } from "./portfolio/page";
