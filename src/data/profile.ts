@@ -20,6 +20,14 @@ export interface EducationItem {
   description: string;
 }
 
+export interface ProjectItem {
+  title: string;
+  description: string;
+  tags: string[];
+  url?: string;
+  repo?: string;
+}
+
 export interface SkillItem {
   name: string;
   level: "Advanced" | "Intermediate";
@@ -42,7 +50,7 @@ export const PROFILE = {
   resumeUrl:
     "https://drive.google.com/file/d/1OT9HUP44F-7CoGmz1KzFBlX0Lye4fCoS/view?usp=sharing",
   heroSummary:
-    "Results-driven Software Engineer with over 5+ years of experience in architecting and optimizing high-performance web applications.",
+    "Results-driven Software Engineer with 5+ years of experience in architecting and optimizing high-performance web applications.",
   aboutIntro:
     "I build high-performance financial applications and trading platforms with React.js, Next.js, Node.js, and Golang.",
   about: [
@@ -55,12 +63,17 @@ export const PROFILE = {
   ] as SocialLink[],
 };
 
-export const ROTATING_TITLES = ["software engineer"];
+export const ROTATING_TITLES = [
+  "software engineer",
+  "frontend developer",
+  "full-stack engineer",
+  "golang developer",
+];
 export const SKILLS = [
   "HTML",
   "CSS",
-  "Javascript",
-  "Typescript",
+  "JavaScript",
+  "TypeScript",
   "Golang",
   "React.js",
   "Next.js",
@@ -95,8 +108,8 @@ export const SKILL_GROUPS: SkillGroup[] = [
     items: [
       { name: "HTML", level: "Advanced" },
       { name: "CSS", level: "Advanced" },
-      { name: "Javascript", level: "Advanced" },
-      { name: "Typescript", level: "Advanced" },
+      { name: "JavaScript", level: "Advanced" },
+      { name: "TypeScript", level: "Advanced" },
       { name: "Golang", level: "Intermediate" },
     ],
   },
@@ -140,11 +153,11 @@ export const SKILL_GROUPS: SkillGroup[] = [
 
 export const EXPERIENCE: ExperienceItem[] = [
   {
-    title: "MTS - II",
+    title: "Software Engineer",
     company: "SMC Global Securities Pvt Ltd",
     location: "Delhi, India",
-    type: "Permanent",
-    period: "May 2023 - Present",
+    type: "Full-Time",
+    period: "May 2023 – Present",
     description:
       "SMC Global provides end-to-end investment and trading solutions.",
     responsibilities: [
@@ -161,7 +174,7 @@ export const EXPERIENCE: ExperienceItem[] = [
     company: "National Informatics Centre",
     location: "Delhi, India",
     type: "Contract",
-    period: "May 2022 - April 2023",
+    period: "May 2022 – April 2023",
     description:
       "National Informatics Centre is the premier ICT organization of the Government of India.",
     responsibilities: [
@@ -176,9 +189,8 @@ export const EXPERIENCE: ExperienceItem[] = [
     company: "NamaSYS",
     location: "Delhi, India (Remote)",
     type: "Full-Time",
-    period: "April 2021 - April 2022",
-    description:
-      "NamaSYS is a service-based company delivering software solutions across domains.",
+    period: "April 2021 – April 2022",
+    description: "",
     responsibilities: [
       "Built a scalable influencer marketing platform using React.js, Node.js, DynamoDB, AWS, and Google OAuth.",
       "Developed an annotation product with React.js, P5.js, and Azure.",
@@ -192,8 +204,37 @@ export const EXPERIENCE: ExperienceItem[] = [
 export const EDUCATION: EducationItem[] = [
   {
     institution: "Delhi Technical Campus",
-    degree: "B.tech - computer science and engineering",
-    period: "2016 - 2020",
-    description: "completed b.tech in computer science major.",
+    degree: "B.Tech — Computer Science & Engineering",
+    period: "2016 – 2020",
+    description: "",
+  },
+];
+
+export const PROJECTS: ProjectItem[] = [
+  {
+    title: "Real-Time Trading Platform",
+    description:
+      "Built from scratch — a high-performance trading platform with live order books, real-time P&L tracking, and WebSocket-driven market data feeds.",
+    tags: ["React.js", "Golang", "WebSocket", "Redux", "Material UI"],
+  },
+  {
+    title: "Portfolio Website",
+    description:
+      "This site — a custom Next.js portfolio with dark/light theming, animated tech stack carousel, GitHub contributions graph, view counter, and smooth scroll.",
+    tags: ["Next.js", "TypeScript", "CSS Modules", "Vercel"],
+    repo: "https://github.com/theabgarg",
+    url: "https://theabgarg.com",
+  },
+  {
+    title: "Influencer Marketing Platform",
+    description:
+      "Scalable platform connecting brands with influencers, featuring campaign management, analytics dashboards, and Google OAuth authentication.",
+    tags: ["React.js", "Node.js", "DynamoDB", "AWS", "Google OAuth"],
+  },
+  {
+    title: "Cloud Storage Desktop App",
+    description:
+      "Electron.js + React.js desktop MVP with secure deep-link authentication and SSO integration, file sync, deployed for internal organization use.",
+    tags: ["Electron.js", "React.js", "SSO", "TypeScript"],
   },
 ];

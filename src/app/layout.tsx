@@ -5,9 +5,10 @@ import Script from "next/script";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Abhishek | Software Developer",
+  metadataBase: new URL("https://theabgarg.com"),
+  title: "Abhishek | Software Engineer",
   description:
-    "Hey! I'm Abhishek, a Software Engineer focused on high-performance web applications.",
+    "Abhishek Garg is a Software Engineer with 5+ years of experience building high-performance web applications with React, Next.js, and Golang.",
   keywords: [
     "Software Engineer",
     "Abhishek Garg",
@@ -19,26 +20,26 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: PROFILE.name }],
   openGraph: {
-    title: "Abhishek | Software Developer",
+    title: "Abhishek | Software Engineer",
     description:
-      "Hey! I'm Abhishek, a Software Engineer focused on high-performance web applications.",
+      "Abhishek Garg is a Software Engineer with 5+ years of experience building high-performance web applications with React, Next.js, and Golang.",
     type: "website",
-    url: "https://portfolio-theabgarg.vercel.app/",
+    url: "https://theabgarg.com",
     siteName: "Abhishek Portfolio",
     images: [
       {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Abhishek | Software Developer",
+        alt: "Abhishek | Software Engineer",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Abhishek | Software Developer",
+    title: "Abhishek | Software Engineer",
     description:
-      "Hey! I'm Abhishek, a Software Engineer focused on high-performance web applications.",
+      "Abhishek Garg is a Software Engineer with 5+ years of experience building high-performance web applications with React, Next.js, and Golang.",
     images: ["/og-image.jpg"],
   },
 };

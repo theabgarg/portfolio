@@ -3,8 +3,9 @@
 import GitHubContributions from "@/components/GitHubContributions";
 import SmoothScroll from "@/components/SmoothScroll";
 import ThemeToggle from "@/components/ThemeToggle";
-import { EDUCATION, EXPERIENCE, PROFILE } from "@/data/profile";
-import { useEffect, useMemo, useState } from "react";
+import { EDUCATION, EXPERIENCE, PROFILE, PROJECTS } from "@/data/profile";
+import Image from "next/image";
+import { useEffect, useMemo, useRef, useState } from "react";
 import type { IconType } from "react-icons";
 import {
   SiDocker,
@@ -54,11 +55,27 @@ const STACK_ITEMS: StackItem[] = [
 export default function PortfolioPage() {
   const [views, setViews] = useState<number | null>(null);
   const [loaded, setLoaded] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const mobileMenuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const timer = setTimeout(() => setLoaded(true), 80);
     return () => clearTimeout(timer);
   }, []);
+
+  useEffect(() => {
+    if (!mobileMenuOpen) return;
+    function handleClick(e: MouseEvent) {
+      if (
+        mobileMenuRef.current &&
+        !mobileMenuRef.current.contains(e.target as Node)
+      ) {
+        setMobileMenuOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClick);
+    return () => document.removeEventListener("mousedown", handleClick);
+  }, [mobileMenuOpen]);
 
   useEffect(() => {
     async function updateViews() {
@@ -83,7 +100,7 @@ export default function PortfolioPage() {
   return (
     <SmoothScroll>
       <div className={styles.pageRoot}>
-        <header className={styles.navShell}>
+        <header className={styles.navShell} ref={mobileMenuRef}>
           <nav className={`${styles.nav} ${styles.container}`}>
             <a href="#home" className={styles.brand}>
               {PROFILE.shortName}
@@ -100,7 +117,7 @@ export default function PortfolioPage() {
                 </a>
               </li>
               <li>
-                <a href="#stack">Things I&apos;ve Built</a>
+                <a href="#projects">Projects</a>
               </li>
               <li>
                 <a href="#experience">Experience</a>
@@ -108,8 +125,45 @@ export default function PortfolioPage() {
             </ul>
             <div className={styles.navActions}>
               <ThemeToggle />
+              <button
+                className={styles.hamburger}
+                aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
+                aria-expanded={mobileMenuOpen}
+                onClick={() => setMobileMenuOpen((v) => !v)}
+              >
+                <span
+                  className={mobileMenuOpen ? styles.barOpen1 : styles.bar}
+                />
+                <span
+                  className={mobileMenuOpen ? styles.barOpen2 : styles.bar}
+                />
+                <span
+                  className={mobileMenuOpen ? styles.barOpen3 : styles.bar}
+                />
+              </button>
             </div>
           </nav>
+          {mobileMenuOpen && (
+            <div className={styles.mobileMenu}>
+              <a
+                href="https://blog.theabgarg.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Blog
+              </a>
+              <a href="#projects" onClick={() => setMobileMenuOpen(false)}>
+                Projects
+              </a>
+              <a href="#experience" onClick={() => setMobileMenuOpen(false)}>
+                Experience
+              </a>
+              <a href="#contact" onClick={() => setMobileMenuOpen(false)}>
+                Contact
+              </a>
+            </div>
+          )}
         </header>
 
         <main
@@ -124,7 +178,14 @@ export default function PortfolioPage() {
           <section className={styles.hero}>
             <div className={styles.avatarWrap}>
               <div className={styles.avatar}>
-                <img src={PROFILE.avatar} alt={PROFILE.name} />
+                <Image
+                  src={PROFILE.avatar}
+                  alt={`${PROFILE.name} avatar`}
+                  width={256}
+                  height={256}
+                  priority
+                  style={{ objectFit: "cover", width: "100%", height: "100%" }}
+                />
               </div>
             </div>
 
@@ -149,9 +210,14 @@ export default function PortfolioPage() {
                     href={social.url}
                     target="_blank"
                     rel="noopener noreferrer"
+                    aria-label={social.name}
                   >
-                    {social.name === "GitHub" && <FaGithub />}
-                    {social.name === "LinkedIn" && <FaLinkedin />}
+                    {social.name === "GitHub" && (
+                      <FaGithub aria-hidden="true" />
+                    )}
+                    {social.name === "LinkedIn" && (
+                      <FaLinkedin aria-hidden="true" />
+                    )}
                     {social.name}
                   </a>
                 ))}
@@ -167,7 +233,7 @@ export default function PortfolioPage() {
           <section id="about" className={styles.section}>
             <h2 className={styles.sectionTitle}>About</h2>
             <p className={styles.aboutLead}>{PROFILE.aboutIntro}</p>
-            <p className={styles.aboutCopy}>{PROFILE.about}</p>
+            <p className={styles.aboutCopy}>{PROFILE.about[0]}</p>
             <div className={styles.aboutGrid}>
               <article className={styles.aboutCard}>
                 <h3>How I work</h3>
@@ -218,6 +284,52 @@ export default function PortfolioPage() {
             <GitHubContributions username={PROFILE.githubUsername} />
           </section>
 
+          <section id="projects" className={styles.section}>
+            <h2 className={styles.sectionTitle}>Projects</h2>
+            <p className={styles.muted}>
+              Things I&apos;ve designed and shipped.
+            </p>
+            <div className={styles.projectList}>
+              {PROJECTS.map((project) => (
+                <article key={project.title} className={styles.projectCard}>
+                  <div className={styles.projectHead}>
+                    <h3 className={styles.projectTitle}>{project.title}</h3>
+                    <div className={styles.projectLinks}>
+                      {project.repo && (
+                        <a
+                          href={project.repo}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          aria-label={`${project.title} repository`}
+                        >
+                          <FaGithub aria-hidden="true" /> Repo
+                        </a>
+                      )}
+                      {project.url && (
+                        <a
+                          href={project.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          aria-label={`${project.title} live site`}
+                        >
+                          ↗ Live
+                        </a>
+                      )}
+                    </div>
+                  </div>
+                  <p className={styles.desc}>{project.description}</p>
+                  <div className={styles.projectTags}>
+                    {project.tags.map((tag) => (
+                      <span key={tag} className={styles.tag}>
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </article>
+              ))}
+            </div>
+          </section>
+
           <section id="experience" className={styles.section}>
             <h2 className={styles.sectionTitle}>Experience</h2>
             <div className={styles.expList}>
@@ -237,7 +349,9 @@ export default function PortfolioPage() {
                     </div>
                     <span className={styles.period}>{item.period}</span>
                   </div>
-                  <p className={styles.desc}>{item.description}</p>
+                  {item.description && (
+                    <p className={styles.desc}>{item.description}</p>
+                  )}
                   <ul className={styles.resp}>
                     {item.responsibilities.map((responsibility) => (
                       <li key={responsibility}>{responsibility}</li>
@@ -260,7 +374,9 @@ export default function PortfolioPage() {
                     </div>
                     <span className={styles.period}>{item.period}</span>
                   </div>
-                  <p className={styles.desc}>{item.description}</p>
+                  {item.description && (
+                    <p className={styles.desc}>{item.description}</p>
+                  )}
                 </article>
               ))}
             </div>
@@ -272,15 +388,20 @@ export default function PortfolioPage() {
               If you reached here, let&apos;s connect and build something
               meaningful.
             </p>
-            <a
-              className={styles.cta}
-              href={PROFILE.socialLinks[1]?.url ?? PROFILE.socialLinks[0]?.url}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <FaLinkedin />
-              Contact Me
-            </a>
+            <div className={styles.contactButtons}>
+              <a
+                className={styles.cta}
+                href={
+                  PROFILE.socialLinks[1]?.url ?? PROFILE.socialLinks[0]?.url
+                }
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Connect on LinkedIn"
+              >
+                <FaLinkedin aria-hidden="true" />
+                Connect on LinkedIn
+              </a>
+            </div>
           </section>
         </main>
 
